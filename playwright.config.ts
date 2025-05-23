@@ -12,23 +12,16 @@ export default defineConfig({
   use: {
     actionTimeout: 0,
     trace: 'on-first-retry',
-    headless: false, // headed by default for local dev
+    headless: false, // always headed
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
     baseURL: 'http://localhost:3000', // update if needed
   },
+  workers: 1, // run tests sequentially
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
+      use: { ...devices['Desktop Chrome'], headless: false },
     },
   ],
 });

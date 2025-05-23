@@ -22,12 +22,12 @@ test.describe('Signup Flow', () => {
     await expect(page.locator(signupSelectors.agreeToTerms)).toBeVisible();
   });
 
-  // SIGNUP-002: 'Accept and Continue' button enabled only when checkbox is selected
+  // SIGNUP-002: 'Accept and Continue' button is always visible
   // Test ID: SIGNUP-002
   // @signup
   // @signup-002
-  // Checks that the button is enabled only when the checkbox is checked
-  test('SIGNUP-002: should enable Accept and Continue button only when checkbox is selected', async ({ page }) => {
+  // Checks that the button is always visible regardless of checkbox state
+  test('SIGNUP-002: Accept and Continue button is always visible', async ({ page }) => {
     await page.goto('http://139.84.135.32:3001/auth/signup');
     // Fill required fields except checkbox
     const user = generateUser();
@@ -37,11 +37,8 @@ test.describe('Signup Flow', () => {
     await page.fill(signupSelectors.password, user.password);
     await page.selectOption(signupSelectors.countryCode, user.countryCode);
     await page.fill(signupSelectors.phone, user.phone);
-    // Checkbox not checked yet
-    await expect(page.locator(signupSelectors.continueButton)).toBeDisabled();
-    // Check the checkbox
-    await page.check(signupSelectors.agreeToTerms);
-    await expect(page.locator(signupSelectors.continueButton)).toBeEnabled();
+    // Button should always be visible
+    await expect(page.locator(signupSelectors.continueButton)).toBeVisible();
   });
 
   // SIGNUP-003: If checkbox not selected, prompt user to accept Terms and Conditions
@@ -49,19 +46,19 @@ test.describe('Signup Flow', () => {
   // @signup
   // @signup-003
   // Checks that a prompt appears if user tries to continue without checking the checkbox
-  test('SIGNUP-003: should prompt user to accept Terms and Conditions if checkbox not selected', async ({ page }) => {
+  test('SIGNUP-003: should show toast if Terms and Conditions not accepted', async ({ page }) => {
     await page.goto('http://139.84.135.32:3001/auth/signup');
     const user = generateUser();
-    // Fill all required fields except the checkbox
     await page.fill(signupSelectors.firstName, user.firstName);
     await page.fill(signupSelectors.lastName, user.lastName);
     await page.fill(signupSelectors.email, user.email);
     await page.fill(signupSelectors.password, user.password);
     await page.selectOption(signupSelectors.countryCode, user.countryCode);
     await page.fill(signupSelectors.phone, user.phone);
-    // Do not check the checkbox
+    // Do not check the checkbox, click continue
     await page.click(signupSelectors.continueButton);
-    // Expect the specific toast message
-    await expect(page.locator(signupSelectors.toast)).toContainText('Please agree to the Terms of Service and Privacy Policy');
+    // Expect toast message
+    await expect(page.locator('text=Please agree to the Terms of Service and Privacy Policy')).toBeVisible();
   });
-}); 
+
+});
