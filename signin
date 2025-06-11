@@ -1,0 +1,113 @@
+sign in	Enter email id and password in login page. Clear email id. Again enter email id, verify that password should also be cleared	"1. Enter email and password.
+2. Clear the email field.
+3. Re-enter a valid email address."	"Password field should be automatically cleared.
+"
+sign in	Enter email id and try to type .com, cursor should not be moved to passoword field	1. Start typing email including ".com" in the email field.	Cursor should remain in the email field.
+sign in	Enter only email id and do not enter password, verify that toast message "Please enter your password" should be displayed	"1. Navigate to the Login page.
+2. Enter a valid email address.
+3. Leave the password field blank.
+4. Click on the ""Login"" or ""Sign In"" button."	A toast message saying "Please enter your password" should be displayed and login should not proceed.
+sign in	Enter only passsword and do not enter email id, verify that password field should be faded	"1. Navigate to the Login page.
+2. Leave the email field empty.
+3. Make sure password filed should not be visible since we are not entering any data"	Make sure password filed should not be visible since we are not entering any data
+sign in	When we try to enter email id, verify that automatically cursor should not be navigated to password field	"1. Navigate to the Login page.
+2. Start typing in the email input field."	Cursor should remain in the email field and cursor should not jump to the password field automatically.
+sign in	When we start typing email, password field should be enabled	"1. Open the Login page.
+2. Start typing a valid email in the email input field."	The password field should become enabled and interactive (e.g., not greyed out) and user can proceed to enter password after email input.
+sign in	Enter phone no and click on send OTP. Wait till time lapse to 0 secs. Enter otp received for phone no. Verify that toast message "invalid" otp should be displayed	"1. Navigate to the Sign In screen with OTP login.
+2. Enter a valid phone number and click ""Send OTP"".
+3. Wait until the OTP timer reaches 0 seconds.
+4. Enter the OTP that was originally received.
+5. Click on the ""Verify"" or ""Login"" button."	A toast message saying "Invalid OTP" should be displayed and login should not proceed.
+sign in	Enter phone no and click on send OTP. Wait till time lapse to 0 secs. Click on resend link. Enter new otp received for the phone no and click on verify button. Verify that user should be successfully logged in	"1. Enter a valid phone number and click ""Send OTP"".
+2. Wait until the 30-second timer lapses.
+3. Click ""Resend OTP"".
+4. Enter the new OTP received.
+5. Click ""Verify""."	OTP is accepted and user is successfully logged in.
+sign in	Attempt invalid entry for 5 times. Wait for lock out period(15 mins) to over. Now try to login with new old OTP, verify that toast message "Invalid OTP" should be displayed and not login successfully	"1. Attempt to log in with an invalid OTP 5 times.
+2. Wait for 15-minute lockout period to expire.
+3. Try logging in with an old (previously sent) OTP."	A toast message "Invalid OTP" is displayed and login is not successful.
+sign in	Attempt invalid entry for 5 times. Wait for lock out period(15 mins) to over. Now try to login with new OTP, verify that user should be able to login successfully	"1. Enter invalid OTP 5 times → trigger lockout.
+2. Wait for 15-minute lockout to expire.
+3. Request a new OTP and log in using it."	Login is successful with the new OTP.
+sign in	Make sure 30 secs time lapse should disappear until we click on "resend" link	"1. Trigger OTP process.
+2. Wait for the 30-second timer to reach 0."	Timer disappears and no timer is visible until user clicks "Resend OTP".
+sign in	Only when user clicks on resend link, 30 secs time lapse should re-appear	"1. Wait for the first 30 seconds to expire.
+2.Click on ""Resend OTP""."	New 30-second timer is shown starting from 30 seconds.
+sign in	Only when user enters email id, forgot password feature should be activated	"1. Navigate to Login screen.
+2. Observe state of ""Forgot Password"" link/button.
+3. Enter a valid email address."	Before email entry: "Forgot Password" is disabled or hidden and after email entry, "Forgot Password" should be enabled or visible.
+sign in	Make sure when user make "new password visible", "confirm password" also should not be visible	"1. Go to Reset Password screen.
+2. Enter new and confirm passwords.
+2. Click eye icon to reveal new password."	Only new password should be made visible and Confirm password remains masked.
+sign in	When user resets password for 'n' no of times, only recently changed password should be valid	"1. Reset password multiple times (e.g., 3 times).
+2. Try logging in with each previous password."	Login succeeds only with the most recent password and all older passwords return invalid credentials.
+sign in	When user enter new OTP as soon as lockout period(15 mins) is over, should be able to login	"1. Trigger 5 invalid attempts and wait 15 minutes.
+2. Immediately request a new OTP after lockout ends.
+3. Enter OTP and log in."	User is successfully logged in with new OTP.
+sign in	When user enter new OTP after some time when lockout period(15 mins) is over, should be able to login	"1. Wait for lockout period to end.
+2. After a few extra minutes, request new OTP.
+3. Enter OTP and click login."	"
+Login should be successful with new OTP."
+Sign Up	When user tries to verify email/ phone no which is already verified, make sure otp section should not be displayed even for fraction of seconds also	1. Attempt to re-verify email/phone already marked as verified.	OTP section should not appear, even briefly and UI should indicate it’s already verified.
+Sign Up	Verify that there should be only 30 secs time lapse for email & phone no verification	1. Trigger OTP for email and phone number verification.	A timer should appear for exactly 30 seconds and user should not be allowed to resend OTP until the timer lapses.
+Sign Up	Whenever 30 secs time lapse is over for email/ phone no verification and enter invalid or previous OTP, toast message "Invalid OTP" should be displayed	"1. Request OTP for phone or email.
+2. Wait for 30-second timer to expire.
+3. Enter an expired or previously used OTP."	A toast message should appear: "Invalid OTP" and OTP should not be accepted.
+Sign Up	Make sure same phone number with different country codes can be verified	"1. Enter phone number 1234567890 with Country Code A → Request OTP → Verify successfully.
+2. Now enter the same phone number 1234567890 with Country Code B → Request OTP → Verify."	System should treat each combination as distinct and Verification should succeed independently for both.
+Sign Up	Fill all required fields. Click on "cancel button" when time is not lapsed to 0 sec then click on "continue button", new Captcha should be generated	"1. Fill out all sign-up form fields.
+2. Observe captcha countdown not yet at 0.
+3. Click ""Cancel"".
+4. Click ""Continue"" again to return to form."	A new Captcha should be generated on returning.
+Sign Up	When we enter invalid captcha, immediately new captcha should be generated	"1. Enter an incorrect captcha.
+2. Attempt to submit the form."	A new captcha image should be generated instantly after invalid input.
+Sign Up	When user waits for 30 secs OTP time lapse and click on resend link, should be pointing to first digit place	"1. Wait until 30-second OTP timer expires.
+2. Click on ""Resend OTP""."	OTP input field should be reset and cursor should be automatically placed at the first digit input box.
+sign in	Verify toast messages for network errors or API failures (e.g., "Unable to connect. Please try again.")	"1. Disconnect from the internet.
+2. Attempt to sign in using phone or email.
+3. Reconnect and retry during or after timeout."	Verify toast messages for network errors or API failures (e.g., "Unable to connect. Please try again.")
+Sign in	Verify input validation for phone/email fields (e.g., invalid format: "abc@", "1234")	"1. Enter a phone number with letters (e.g., ""123abc"") or an invalid email (e.g., ""user@.com"").
+2. Tap “Continue.”"	Verify input validation for phone/email fields (e.g., invalid format: "abc@", "1234")
+Sign in	Verify login using copied/pasted OTP or password	"1. Copy a valid OTP/password to clipboard.
+2. Paste it into the OTP/password field using long press or context menu.
+3. Submit."	Verify login using copied/pasted OTP or password
+Sign in	Verify keyboard behavior – e.g., auto-focus next field, numeric keypad for OTP	"1. Enter the first digit of the OTP.
+2. Check whether the next field is automatically focused.
+3. On mobile, ensure numeric keypad appears."	Verify keyboard behavior – e.g., auto-focus next field, numeric keypad for OTP
+sign in	Verify auto sign-in for remembered sessions (if supported)	"1. Sign in and enable ""Remember me"" or equivalent.
+2. Close and reopen the app.
+3. Observe the login screen."	Verify auto sign-in for remembered sessions (if supported)
+sign in	Verify accessibility support (screen readers, tab navigation)	"1. Enable screen reader on your device.
+2. Navigate through the Sign In screen using gestures or keyboard.
+3. Observe focus and label announcements."	Verify accessibility support (screen readers, tab navigation)
+Sign Up	Verify multiple simultaneous OTP requests (email/phone) – block rapid re-requests	"1. Request email/phone OTP.
+2. Immediately try tapping “Resend OTP” repeatedly."	Verify multiple simultaneous OTP requests (email/phone) – block rapid re-requests
+Sign Up	"Verify cross-field validation – e.g., phone number can't be same as email, or password can't include user’s name/email	"	"1. Enter email: user@example.com
+2. Enter password: user@example123!
+3. Attempt to proceed."	"Verify cross-field validation – e.g., phone number can't be same as email, or password can't include user’s name/email	"
+Sign Up	Verify sign-up with international phone numbers (country code input)	"1. Select a non-default country code (e.g., +44 for UK).
+2. Enter a valid UK phone number.
+3. Proceed."	Verify sign-up with international phone numbers (country code input)
+Sign Up	Verify error when user navigates back mid-signup – and returns	"1. Enter all the fields
+2. User browser/ mobile back button
+3. Observe Error"	Verify error when user navigates back mid-signup – and returns
+Sign Up	Verify app behavior on rotation (mobile) or browser refresh (web) during signup	"1.Fill some fields in the Sign Up form.
+2. Rotate the device or refresh the browser page."	Verify app behavior on rotation (mobile) or browser refresh (web) during signup
+Sign Up	Verify CAPTCHA bypass attempt(Ensure CAPTCHA can’t be skipped or bypassed by bots)	"1. Inspect or block CAPTCHA scripts (e.g., via dev tools).
+2. Try proceeding without solving CAPTCHA."	Verify CAPTCHA bypass attempt(Ensure CAPTCHA can’t be skipped or bypassed by bots)
+Sign Up	Verify rate limiting on login/signup attempts(Prevents brute-force attacks)	"1. Enter wrong password 10+ times quickly.
+2. Observe the system response."	Verify rate limiting on login/signup attempts(Prevents brute-force attacks)
+Sign Up	Verify logs/events are triggered correctly for analytics/auditing (e.g., Firebase, Mixpanel)	"1. Sign in, fail OTP once, reset password.
+2. Check if event logs are generated (requires developer tool access or log backend)."	Verify logs/events are triggered correctly for analytics/auditing (e.g., Firebase, Mixpanel)
+Sign Up	Verify timeout or auto-expiration of screens (e.g., OTP entry screen after inactivity) to nsures proper flow control and security	"1. Land on OTP screen.
+2. Wait longer than OTP validity duration (e.g., 2 minutes).
+3. Enter OTP."	Verify timeout or auto-expiration of screens (e.g., OTP entry screen after inactivity) to nsures proper flow control and security
+Sign Up	Verify app behavior when switching from mobile data to Wi-Fi during sign-up/login to ensures resilience across network types	"1. Begin sign-in with mobile data.
+2. Mid-way, switch to Wi-Fi or vice versa.
+3. Submit form."	Verify app behavior when switching from mobile data to Wi-Fi during sign-up/login to ensures resilience across network types
+Sign Up	Verify multi-language support (if applicable) for all messages/toasts	"1. Change device language to Spanish or another supported language.
+2. Open app and navigate to Sign In/Sign Up."	Verify multi-language support (if applicable) for all messages/toasts
+Sign Up	Verify case-insensitive uniqueness for email	"1. Sign up using Test@Email.com
+2. Try again with test@email.com"	Verify case-insensitive uniqueness for email
+Sign up	As soon as we start entering email/ phone number, "verfify link" should be enabled	1. Type email/ phone no	Verify that "verify link" is enabled
